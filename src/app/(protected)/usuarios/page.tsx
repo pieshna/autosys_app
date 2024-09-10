@@ -30,8 +30,8 @@ function UsuariosList() {
       type: 'autocomplete',
       label: 'Rol',
       required: true,
-      url: 'roles/admin',
-      id: 'rol_id',
+      url: 'roles',
+      id: 'id',
       camposAMostrar: ['nombre'],
       placeholder: 'Seleccione rol'
     },
@@ -49,8 +49,6 @@ function UsuariosList() {
     return estructuraTemp
   }
 
-  const hideCols = ['usuario_id', 'aplicacion_id', 'email', 'aplicacion']
-
   const headersValues: headerProps[] = [
     { header: 'Creacion', value: 'created_at' },
     { header: 'Actualizacion', value: 'updated_at' },
@@ -61,14 +59,10 @@ function UsuariosList() {
     <CrudTemplate
       estructura={estructura}
       estructuraEditar={estructuraEditar()}
-      idName="usuario_id"
-      url={`usuarios/aplicacion/${aplicacionId}`}
-      urlCrear="usuarios"
-      urlEditar="usuarios"
-      urlEliminar="usuarios"
+      url={`usuarios`}
       itemsPorPaginaFormulario={2}
-      hideCols={hideCols}
       headerName={headersValues}
+      agregarBuscador
     />
   )
 }

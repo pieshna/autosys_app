@@ -10,7 +10,7 @@ const estructura: FormularioEstructura = {
     url: 'usuarios',
     camposAMostrar: ['nombre', 'apellido'],
     join: ' ',
-    id: 'usuario_id'
+    id: 'id'
   },
   rol_id: {
     type: 'select',
@@ -19,17 +19,16 @@ const estructura: FormularioEstructura = {
     required: true,
     url: 'roles',
     camposAMostrar: ['nombre'],
-    id: 'rol_id'
+    id: 'id'
   }
 }
 
 function AsignacionUsuariosRoles() {
-  const hideCols = ['usuario_rol_id', 'usuario_id', 'rol_id']
+  const hideCols = ['id', 'usuario_id', 'rol_id']
   return (
     <CrudTemplate
       estructura={estructura}
-      idName="usuario_rol_id"
-      url="usuarios-roles"
+      url="usuario_rol"
       hideCols={hideCols}
       agregarBuscador
     />
