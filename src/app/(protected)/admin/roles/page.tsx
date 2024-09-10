@@ -11,16 +11,7 @@ const estructura: FormularioEstructura = {
 }
 
 function RolesVista() {
-  const hideCols = ['rol_id']
-
-  return (
-    <CrudTemplate
-      estructura={estructura}
-      idName="rol_id"
-      url="roles"
-      hideCols={hideCols}
-    />
-  )
+  return <CrudTemplate estructura={estructura} url="roles" />
 }
 
 export default RolesVista

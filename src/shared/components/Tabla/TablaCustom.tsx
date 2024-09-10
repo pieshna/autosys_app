@@ -36,14 +36,14 @@ const TablaCustom = ({
   data,
   enumerar,
   acciones,
-  hideCamps = [],
+  hideCamps = ['id'],
   onColumnSelected,
   agregarBuscador = false,
   itemsPerPage = 5,
   headerName = [],
   idName,
   showTable = true,
-  cardHeader = [],
+  cardHeader = ['id'],
   hideCampsCard = []
 }: TableProps) => {
   const [searchTerm, setSearchTerm] = useState('')
