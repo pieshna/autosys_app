@@ -4,14 +4,17 @@ import FormularioGenerico from '@/shared/components/forms/FormularioGenerico'
 import { estructuraRegister } from '@/shared/estructurasFormularios/register'
 import { createCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
+import { useRouter } from 'next/navigation'
 
 function Register({ noColumnas = 1 }: { noColumnas?: number }) {
+  const router = useRouter()
   const handleSubmit = (data: any) => {
     fetchPersonalizado('auth/register', 'POST', undefined, data).then(
       (result) => {
         if (result) {
           createCookieClientSide('token', result)
-          if (window) window.location.href = '/dashboard'
+          router.push('/dashboard')
+          //if (window) window.location.href = '/dashboard'
         }
       }
     )

@@ -2,9 +2,9 @@
 import FormularioGenerico from '@/shared/components/forms/FormularioGenerico'
 import { estructuraFormularioLogin } from '@/shared/estructurasFormularios/login'
 import {
-  getCookieClientSide,
+  createCookieClientSide,
   deleteCookieClientSide,
-  createCookieClientSide
+  getCookieClientSide
 } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import {
@@ -17,7 +17,7 @@ import { useEffect } from 'react'
 function Login({ children }: { children?: React.ReactNode }) {
   const token = getCookieClientSide('token')
   const tokenDecoded = GetDecodedToken(token)
-  const { replace } = useRouter()
+  const { replace, push } = useRouter()
 
   useEffect(() => {
     if (!tokenIsAlive(token)) {
@@ -31,7 +31,8 @@ function Login({ children }: { children?: React.ReactNode }) {
     fetchPersonalizado('auth/login', 'POST', undefined, data).then((result) => {
       if (result) {
         createCookieClientSide('token', result)
-        if (window) window.location.href = '/dashboard'
+        //if (window) window.location.href = '/dashboard'
+        push('/dashboard')
       }
     })
   }
