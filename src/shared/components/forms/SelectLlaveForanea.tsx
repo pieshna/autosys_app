@@ -1,8 +1,8 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
+import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { Select, SelectItem } from '@nextui-org/react'
+import { useEffect, useState } from 'react'
 
 interface SelectLlaveForaneaProps {
   id: string
@@ -21,7 +21,7 @@ interface SelectLlaveForaneaProps {
   focus?: boolean
 }
 
-const SelectLlaveForanea: React.FC<SelectLlaveForaneaProps> = ({
+const SelectLlaveForanea = ({
   id,
   label,
   name,
@@ -36,7 +36,7 @@ const SelectLlaveForanea: React.FC<SelectLlaveForaneaProps> = ({
   dataToReturn = null,
   placeholder = '',
   focus = false
-}) => {
+}: SelectLlaveForaneaProps) => {
   const [data, setData] = useState<any[]>([])
   const [valor, setValor] = useState<string>('')
 

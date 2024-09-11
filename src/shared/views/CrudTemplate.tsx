@@ -7,7 +7,7 @@ import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { useEffect, useState } from 'react'
 import { sizeModalType } from '../components/createEdit.interface'
-import DeleteModal from '../components/DeleteModal'
+import DeleteModalV2 from '../components/DeleteModalV2'
 import { detectViewPort } from '../tools/detectViewPort'
 
 export interface CrudProps {
@@ -102,13 +102,13 @@ function CrudTemplate({
   return (
     <>
       {showDeleteModal && (
-        <DeleteModal
+        <DeleteModalV2
           title={textDeleteModal || 'Eliminar'}
           message="¿Está seguro que desea eliminar?"
           url={urlEliminar}
           id={idToDelete}
-          hideModal={hideModal}
           reload={reload}
+          close={hideModal}
         />
       )}
       <CreateForm

@@ -11,14 +11,14 @@ interface InputGenericoProps {
   required?: boolean
   placeholder?: string
   autoComplete?: boolean
-  defaultValue?: string | number
+  defaultValue?: string | number | null
   disabled?: boolean
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   icon?: string
   focus?: boolean
 }
 
-const InputGenerico: React.FC<InputGenericoProps> = ({
+const InputGenerico = ({
   label,
   type,
   name,
@@ -32,7 +32,7 @@ const InputGenerico: React.FC<InputGenericoProps> = ({
   disabled = false,
   icon = '',
   focus = false
-}) => {
+}: InputGenericoProps) => {
   const [valor, setValor] = useState<string>('')
 
   useEffect(() => {

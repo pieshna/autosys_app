@@ -1,8 +1,8 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { Button } from '@nextui-org/react'
+import { useEffect, useState } from 'react'
 import InputGenerico from './InputGenerico'
 import SelectLlaveForanea from './SelectLlaveForanea'
-import { Button } from '@nextui-org/react'
 import SelectWithAutocomplete from './SelectWithAutoComplete'
 
 interface FormProps {
@@ -36,7 +36,7 @@ interface FormProps {
   typeButtonSubmit?: 'submit' | 'button'
 }
 
-const FormularioGenerico: React.FC<FormProps> = ({
+const FormularioGenerico = ({
   formData,
   onSubmitFunction,
   noColumnas = 1,
@@ -47,7 +47,7 @@ const FormularioGenerico: React.FC<FormProps> = ({
   alinearBoton = 'justify-end',
   typeButtonSubmit = 'submit',
   children
-}) => {
+}: FormProps) => {
   const [formValues, setFormValues] = useState<Record<string, string>>({})
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
 
