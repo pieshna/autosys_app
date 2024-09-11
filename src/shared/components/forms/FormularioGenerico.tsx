@@ -36,6 +36,14 @@ interface FormProps {
   typeButtonSubmit?: 'submit' | 'button'
 }
 
+const initData = (formData: FormProps['formData']) => {
+  const defaultValues: any = {}
+  Object.entries(formData).forEach(([fieldName, fieldData]) => {
+    defaultValues[fieldName] = fieldData.defaultValue || ''
+  })
+  return defaultValues
+}
+
 const FormularioGenerico = ({
   formData,
   onSubmitFunction,
@@ -48,16 +56,14 @@ const FormularioGenerico = ({
   typeButtonSubmit = 'submit',
   children
 }: FormProps) => {
-  const [formValues, setFormValues] = useState<Record<string, string>>({})
+  const [formValues, setFormValues] = useState<Record<string, string>>(
+    initData(formData)
+  )
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
 
   useEffect(() => {
     if (Object.keys(datosAMostrar).length === 0) {
-      const defaultValues: any = {}
-      Object.entries(formData).forEach(([fieldName, fieldData]) => {
-        defaultValues[fieldName] = fieldData.defaultValue || ''
-      })
-      setFormValues(defaultValues)
+      setFormValues(initData(formData))
     } else {
       setFormValues(datosAMostrar)
     }
