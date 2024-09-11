@@ -133,7 +133,7 @@ const TablaCustom = ({
                 className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg ml-4"
                 onClick={() => acciones.eliminar!(item.id || item[idName])}
               >
-                Eliminar
+                Quitar
               </button>
             )}
           </div>
