@@ -1,9 +1,8 @@
-'use client'
 import NavbarClientSide from '@/shared/components/navbar/Navbar'
-import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
+import { getCookieServerSide } from '@/shared/tools/cookies/tokenServerSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { GetDecodedToken } from '@/shared/tools/token/tokenFromClient'
-import { useState, useEffect, Suspense } from 'react'
+import { Suspense } from 'react'
 
 export interface MenuItemInterface {
   navbar_id?: string
@@ -30,14 +29,14 @@ export const menuItemsDefault: MenuItemInterface[] = [
 ]
 
 const getNav = async () => {
-  const token = getCookieClientSide('token')
+  const token = getCookieServerSide('token')
   const tokenDecoded = GetDecodedToken(token)
   menuItemsDefault[0].title =
     tokenDecoded?.userName || menuItemsDefault[0].title
   const data = await fetchPersonalizado(
     'nav/navbar',
     'GET',
-    getCookieClientSide('token')
+    getCookieServerSide('token')
   )
   if (!data || data?.length === 0) {
     return menuItemsDefault
@@ -46,23 +45,14 @@ const getNav = async () => {
   return unido
 }
 
-const NavbarCustom = ({
+const NavbarCustom = async ({
   getData = false,
   defaultItems = menuItemsDefault
 }: {
   getData?: boolean
   defaultItems?: MenuItemInterface[]
 }) => {
-  const [menuItems, setMenuItems] = useState<MenuItemInterface[]>([])
-  useEffect(() => {
-    if (getData) {
-      setMenuItems(defaultItems)
-      return
-    }
-    getNav().then((data) => {
-      setMenuItems(data)
-    })
-  }, [])
+  const menuItems = getData ? defaultItems : await getNav().then((data) => data)
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NavbarClientSide menuItems={menuItems} />

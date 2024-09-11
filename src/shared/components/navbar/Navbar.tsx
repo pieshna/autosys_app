@@ -21,7 +21,7 @@ import { useEffect, useState } from 'react'
 
 function NavbarClientSide({ menuItems }: { menuItems: MenuItemInterface[] }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(true)
   const path = usePathname()
 
   useEffect(() => {
