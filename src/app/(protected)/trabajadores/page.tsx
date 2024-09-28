@@ -1,7 +1,7 @@
 import { FormularioEstructura } from '@/shared/estructurasFormularios/type'
 import CrudTemplate from '@/shared/views/CrudTemplate'
 
-function Clientes() {
+function Trabajadores() {
   const estructura: FormularioEstructura = {
     usuario_id: {
       type: 'autocomplete',
@@ -25,11 +25,17 @@ function Clientes() {
       placeholder: 'Ingrese un apellido',
       required: false
     },
-    correo: {
-      type: 'email',
-      label: 'Correo',
-      placeholder: 'Ingrese un correo',
-      required: false
+    porcentaje: {
+      type: 'number',
+      label: 'Porcentaje',
+      placeholder: 'Ingrese un porcentaje',
+      required: true
+    },
+    especialidad: {
+      type: 'text',
+      label: 'Especialidad',
+      placeholder: 'Ingrese una especialidad',
+      required: true
     },
     telefono: {
       type: 'number',
@@ -53,10 +59,10 @@ function Clientes() {
       estructura={estructura}
       estructuraEditar={estrucutraEditar}
       agregarBuscador
-      url="clientes"
+      url="trabajadores"
       itemsPorPaginaFormulario={1}
     ></CrudTemplate>
   )
 }
 
-export default Clientes
+export default Trabajadores

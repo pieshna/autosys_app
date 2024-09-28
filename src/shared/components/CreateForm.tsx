@@ -3,7 +3,6 @@
 import FormularioGenerico from '@/shared/components/forms/FormularioGenerico'
 import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
-import { toast } from 'sonner'
 import {
   Button,
   Modal,
@@ -12,6 +11,7 @@ import {
   ModalHeader,
   useDisclosure
 } from '@nextui-org/react'
+import { toast } from 'sonner'
 import { FormProps } from './createEdit.interface'
 
 const CreateForm = ({
@@ -37,6 +37,9 @@ const CreateForm = ({
     Object.keys(estructuraData).forEach((key) => {
       if (estructuraData[key].type === 'number') {
         datosEnvio[key] = parseFloat(datosEnvio[key])
+        if (isNaN(datosEnvio[key])) {
+          delete datosEnvio[key]
+        }
       }
     })
 
