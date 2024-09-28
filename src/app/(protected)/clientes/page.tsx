@@ -25,26 +25,33 @@ function Clientes() {
       placeholder: 'Ingrese un apellido',
       required: false
     },
-    username: {
-      type: 'text',
-      label: 'Usuario',
-      placeholder: 'Ingrese un username',
+    correo: {
+      type: 'email',
+      label: 'Correo',
+      placeholder: 'Ingrese un correo',
       required: false
     },
-    rol_id: {
-      type: 'autocomplete',
-      label: 'Rol',
-      required: false,
-      url: 'roles',
-      id: 'id',
-      camposAMostrar: ['nombre'],
-      placeholder: 'Seleccione rol'
+    telefono: {
+      type: 'number',
+      label: 'Teléfono',
+      placeholder: 'Ingrese un teléfono',
+      required: false
+    },
+    direccion: {
+      type: 'text',
+      label: 'Dirección',
+      placeholder: 'Ingrese una dirección',
+      required: false
     }
   }
+
+  const estrucutraEditar = estructura
+  delete estrucutraEditar.usuario_id
 
   return (
     <CrudTemplate
       estructura={estructura}
+      estructuraEditar={estrucutraEditar}
       agregarBuscador
       url="clientes"
       itemsPorPaginaFormulario={1}
