@@ -41,7 +41,7 @@ function Login({ children }: { children?: React.ReactNode }) {
     <>
       <div className="w-full h-screen flex justify-center items-center">
         <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
-        <div className="flex flex-col gap-4 shadow-2xl p-8 rounded-xl bg-gray-500">
+        <div className="flex flex-col gap-4 shadow-2xl p-8 rounded-xl bg-gray-500 text-gray-200">
           {children}
           <FormularioGenerico
             datosAMostrar={{}}

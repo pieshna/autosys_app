@@ -69,7 +69,7 @@ function AdminDashboard() {
                     <p>{item.trabajador}</p>
                   </div>
 
-                  <div className="flex flex-col justify-end items-center w-10 ">
+                  <div className="flex flex-col justify-end items-center w-48 ">
                     <p>Q.{item.pago_trabajador.slice(0, -2)}</p>
                   </div>
                 </div>

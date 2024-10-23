@@ -47,7 +47,7 @@ function NavbarClientSide({ menuItems }: { menuItems: MenuItemInterface[] }) {
           maxWidth="full"
           isMenuOpen={isMenuOpen}
           onMenuOpenChange={setIsMenuOpen}
-          className="bg-[#e6e6e6c1]"
+          className="bg-[#ffffffea]"
         >
           <NavbarContent className="sm:pr-0">
             <NavbarBrand>
