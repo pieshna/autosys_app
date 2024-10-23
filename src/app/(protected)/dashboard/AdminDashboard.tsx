@@ -29,7 +29,7 @@ function AdminDashboard() {
 
   return (
     <>
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 text-white">
         <div className="grid place-items-center pt-10">
           <p className="text-center font-bold text-xl">
             Trabajos realizados el ultimo mes

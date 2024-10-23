@@ -177,8 +177,8 @@ const TablaCustom = ({
         />
       )}
       {showTable && (
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-x-auto rounded-xl">
+          <table className="min-w-full divide-y divide-gray-500">
             <EncabezadosTabla
               headers={headers}
               enumerar={enumerar}

@@ -24,7 +24,7 @@ const CuerpoTabla = ({
   onColumnSelected
 }: CuerpoTablaProps) => {
   return (
-    <tbody className="bg-white divide-y divide-gray-200">
+    <tbody className="bg-slate-400 divide-y divide-gray-200">
       {currentPageData.map((item, index) => (
         <tr key={index} className={index % 2 == 0 ? '' : 'bg-gray-100/30'}>
           {enumerar && (
