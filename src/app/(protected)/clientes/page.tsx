@@ -29,7 +29,8 @@ function Clientes() {
       type: 'email',
       label: 'Correo',
       placeholder: 'Ingrese un correo',
-      required: false
+      required: false,
+      show: false
     },
     telefono: {
       type: 'number',
@@ -55,6 +56,7 @@ function Clientes() {
       agregarBuscador
       url="clientes"
       itemsPorPaginaFormulario={1}
+      hideCols={['correo', 'id']}
     ></CrudTemplate>
   )
 }

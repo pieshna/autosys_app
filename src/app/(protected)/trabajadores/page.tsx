@@ -47,7 +47,8 @@ function Trabajadores() {
       type: 'text',
       label: 'Dirección',
       placeholder: 'Ingrese una dirección',
-      required: false
+      required: false,
+      show: false
     }
   }
 
@@ -61,6 +62,7 @@ function Trabajadores() {
       agregarBuscador
       url="trabajadores"
       itemsPorPaginaFormulario={1}
+      hideCols={['direccion', 'id']}
     ></CrudTemplate>
   )
 }

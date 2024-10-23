@@ -1,11 +1,11 @@
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
-  Tooltip,
-  Legend
+  Tooltip
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
@@ -18,7 +18,7 @@ export interface BarChartProps {
     datos2?: number[]
     colores: string[]
   }
-  labels?: string[]
+  labels: string[]
   titulo?: string
 }
 
