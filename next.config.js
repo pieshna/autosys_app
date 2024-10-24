@@ -6,6 +6,12 @@ const nextConfig = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.optimization.minimize = false
+    }
+    return config
   }
 }
 
