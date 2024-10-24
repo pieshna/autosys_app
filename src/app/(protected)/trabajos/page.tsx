@@ -53,7 +53,12 @@ const estructura: FormularioEstructura = {
 function Trabajos() {
   const hideCol = ['id', 'trabajador_id', 'vehiculo_id']
   return (
-    <CrudTemplate estructura={estructura} url="trabajos" hideCols={hideCol} />
+    <CrudTemplate
+      estructura={estructura}
+      url="trabajos"
+      hideCols={hideCol}
+      agregarBuscador
+    />
   )
 }
 
