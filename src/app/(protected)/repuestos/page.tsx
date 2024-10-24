@@ -24,15 +24,15 @@ const estructura: FormularioEstructura = {
 }
 
 interface RepuestosProps {
-  returned?: any
+  selectColumn?: any
 }
 
-function Repuestos({ returned }: RepuestosProps) {
+function Repuestos({ selectColumn }: RepuestosProps) {
   return (
     <CrudTemplate
       estructura={estructura}
       url="repuestos"
-      columnSelected={returned}
+      columnSelected={selectColumn}
     />
   )
 }

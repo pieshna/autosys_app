@@ -29,13 +29,13 @@ export const estructuraVales: FormularioEstructura = {
   }
 }
 
-function Vales({ returned }: { returned?: any }) {
+function Vales({ selectColumn }: { selectColumn?: any }) {
   return (
     <CrudTemplate
       estructura={estructuraVales}
       url="vales"
       hideCols={['repuesto_id', 'id']}
-      columnSelected={returned}
+      columnSelected={selectColumn}
     />
   )
 }

@@ -38,13 +38,13 @@ function FormularioVale({ id }: { id?: string }) {
 
   const childrens: TabsChildrenProps[] = [
     {
-      child: <Repuestos returned={handleRepuestos} />,
+      child: <Repuestos selectColumn={handleRepuestos} />,
       title: 'Repuestos',
       icon: <IconList />,
       key: '1'
     },
     {
-      child: <Vales returned={handleVales} />,
+      child: <Vales selectColumn={handleVales} />,
       title: 'Vales',
       icon: <IconArticle />,
       key: '2'
