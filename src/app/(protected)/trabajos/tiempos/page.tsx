@@ -48,7 +48,7 @@ function TiemposTrabajos() {
   const handleCloseModal = () => {
     fetchPersonalizado('trabajos/recibo/' + showModal, 'GET', token).then(
       (data) => {
-        if (window) tiket('print', data)
+        if (window) tiket('b64', data)
       }
     )
     //setDatapdf(dataTemp)

@@ -80,13 +80,11 @@ const createPdf = async (props: any, output = 'print') => {
 
       if (output === 'b64') {
         //SI INDICAMOS QUE LA SALIDA SERA [b64] Base64
-        const pdfMakeCreatePdf = pdfMake.createPdf(docDefinition)
-        pdfMakeCreatePdf.getBase64((data) => {
-          resolve({
-            success: true,
-            content: data,
-            message: 'Archivo generado correctamente.'
-          })
+        const pdfMakeCreatePdf = pdfMake.createPdf(docDefinition).download()
+        resolve({
+          success: true,
+          content: null,
+          message: 'Archivo generado correctamente.'
         })
         return
       }
