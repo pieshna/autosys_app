@@ -1,7 +1,7 @@
 import { FormularioEstructura } from '@/shared/estructurasFormularios/type'
 import CrudTemplate from '@/shared/views/CrudTemplate'
 
-const estructura: FormularioEstructura = {
+export const estructuraVales: FormularioEstructura = {
   repuesto_id: {
     type: 'autocomplete',
     label: 'Repuesto',
@@ -29,12 +29,13 @@ const estructura: FormularioEstructura = {
   }
 }
 
-function Vales() {
+function Vales({ returned }: { returned?: (item: any, column: any) => void }) {
   return (
     <CrudTemplate
-      estructura={estructura}
+      estructura={estructuraVales}
       url="vales"
       hideCols={['repuesto_id', 'id']}
+      columnSelected={returned}
     />
   )
 }

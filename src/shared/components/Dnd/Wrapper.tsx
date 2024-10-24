@@ -9,6 +9,7 @@ import Droppable from './Droppable'
 interface WrapperDnDProps {
   contents: string[]
   submit: (data: any) => void
+  change?: (data: any) => void
   data: any[]
   keyShow: string[]
   textSlotDisponible?: string
@@ -18,6 +19,7 @@ function WrapperDnD({
   contents,
   submit,
   data,
+  change,
   keyShow = [],
   textSlotDisponible = 'Disponible'
 }: WrapperDnDProps) {
@@ -31,6 +33,10 @@ function WrapperDnD({
   useEffect(() => {
     setItems(data ?? [])
   }, [data])
+
+  useEffect(() => {
+    change && change(items)
+  }, [items])
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event

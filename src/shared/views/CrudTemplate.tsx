@@ -29,6 +29,7 @@ export interface CrudProps {
   sizeModal?: sizeModalType
   textDeleteModal?: string
   cabezaCard?: string[]
+  columnSelected?: (item: any, column: string) => void
 }
 
 interface Textos {
@@ -60,7 +61,8 @@ function CrudTemplate({
   itemsPorPaginaTabla,
   sizeModal,
   textDeleteModal,
-  cabezaCard = []
+  cabezaCard = [],
+  columnSelected
 }: CrudProps) {
   const viwport = detectViewPort()
   const [data, setData] = useState([])
@@ -131,6 +133,7 @@ function CrudTemplate({
         itemsPerPage={itemsPorPaginaTabla}
         cardHeader={cabezaCard}
         showTable={viwport === 'desktop' || viwport === undefined}
+        onColumnSelected={columnSelected}
       />
       {openEdit && (
         <EditForm

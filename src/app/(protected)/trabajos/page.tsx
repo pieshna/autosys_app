@@ -1,7 +1,7 @@
 import { FormularioEstructura } from '@/shared/estructurasFormularios/type'
 import CrudTemplate from '@/shared/views/CrudTemplate'
 
-const estructura: FormularioEstructura = {
+export const estructuraTrabajos: FormularioEstructura = {
   trabajador_id: {
     type: 'autocomplete',
     label: 'Trabajador',
@@ -54,7 +54,7 @@ function Trabajos() {
   const hideCol = ['id', 'trabajador_id', 'vehiculo_id']
   return (
     <CrudTemplate
-      estructura={estructura}
+      estructura={estructuraTrabajos}
       url="trabajos"
       hideCols={hideCol}
       agregarBuscador

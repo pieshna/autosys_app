@@ -22,8 +22,18 @@ const estructura: FormularioEstructura = {
   }
 }
 
-function Repuestos() {
-  return <CrudTemplate estructura={estructura} url="repuestos" />
+interface RepuestosProps {
+  returned?: (item: any, column: any) => void
+}
+
+function Repuestos({ returned }: RepuestosProps) {
+  return (
+    <CrudTemplate
+      estructura={estructura}
+      url="repuestos"
+      columnSelected={returned}
+    />
+  )
 }
 
 export default Repuestos
