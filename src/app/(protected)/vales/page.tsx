@@ -29,7 +29,7 @@ export const estructuraVales: FormularioEstructura = {
   }
 }
 
-function Vales({ returned }: { returned?: (item: any, column: any) => void }) {
+function Vales({ returned }: { returned?: any }) {
   return (
     <CrudTemplate
       estructura={estructuraVales}

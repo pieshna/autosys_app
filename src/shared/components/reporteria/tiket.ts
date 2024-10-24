@@ -15,7 +15,7 @@ export interface datosRecibo {
   }[]
 }
 
-const generateTicket = async (output, data: datosRecibo) => {
+const generateTicket = async (output: any, data: datosRecibo) => {
   const content: Content = [
     {
       text: 'Recibo #' + Math.floor(Math.random() * 1000000),

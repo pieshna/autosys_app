@@ -2,7 +2,7 @@
 import WrapperDnD from '@/shared/components/Dnd/Wrapper'
 import EditForm from '@/shared/components/EditForm'
 import ModalGeneric from '@/shared/components/ModalGeneric'
-import tiket, { datosRecibo } from '@/shared/components/reporteria/tiket'
+import tiket from '@/shared/components/reporteria/tiket'
 import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { useEffect, useState } from 'react'
@@ -23,7 +23,6 @@ function TiemposTrabajos() {
     })
   }, [reloadme])
 
-  useEffect(() => {}, [datapdf])
   const handleSubmit = (data: any) => {
     fetchPersonalizado('trabajos', 'PUT', token, data).then((data) => {
       setTimeout(() => {
@@ -36,18 +35,9 @@ function TiemposTrabajos() {
   const handleChange = (datos: any) => {
     const data = datos.find((item: any) => item.parent === 'Terminado')
     if (!data) return
+    handleSubmit(datos)
     setId(data.id)
-    const dataTemp: datosRecibo = {
-      nombre: data.cliente,
-      fecha: new Date().toLocaleDateString(),
-      productos: [
-        { nombre: data.placa, cantidad: 1, precio: 100 },
-        { nombre: data.descripcion, cantidad: 1, precio: 100 }
-      ]
-    }
-    //tiket('print', dataTemp)
     setDatapdf(datos)
-    //setData(datos.filter((item: any) => item.parent !== 'Terminado'))
   }
 
   const handleClose = () => {
@@ -58,7 +48,7 @@ function TiemposTrabajos() {
   const handleCloseModal = () => {
     fetchPersonalizado('trabajos/recibo/' + showModal, 'GET', token).then(
       (data) => {
-        tiket('print', data)
+        if (window) tiket('print', data)
       }
     )
     //setDatapdf(dataTemp)

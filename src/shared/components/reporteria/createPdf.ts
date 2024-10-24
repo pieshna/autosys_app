@@ -6,7 +6,7 @@ import printjs from 'print-js'
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
-const createPdf = async (props, output = 'print') => {
+const createPdf = async (props: any, output = 'print') => {
   return new Promise((resolve, reject) => {
     try {
       const {
@@ -118,7 +118,7 @@ const createPdf = async (props, output = 'print') => {
         content: null,
         message: 'Debes enviar tipo salida.'
       })
-    } catch (error) {
+    } catch (error: any) {
       reject({
         success: false,
         content: null,

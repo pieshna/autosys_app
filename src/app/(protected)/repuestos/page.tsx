@@ -1,3 +1,4 @@
+'use client'
 import { FormularioEstructura } from '@/shared/estructurasFormularios/type'
 import CrudTemplate from '@/shared/views/CrudTemplate'
 
@@ -23,7 +24,7 @@ const estructura: FormularioEstructura = {
 }
 
 interface RepuestosProps {
-  returned?: (item: any, column: any) => void
+  returned?: any
 }
 
 function Repuestos({ returned }: RepuestosProps) {
