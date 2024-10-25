@@ -105,11 +105,15 @@ const createPdf = async (props: any, output = 'print') => {
           const pdfMakeCreatePdf = pdfMake.createPdf(docDefinition)
           pdfMakeCreatePdf.getBase64((data) => {
             if (data) {
-              printjs({
-                printable: data,
-                type: 'pdf',
-                base64: true
-              })
+              if (window) {
+                printjs({
+                  printable: data,
+                  type: 'pdf',
+                  base64: true
+                })
+              } else {
+                console.log('No hay window')
+              }
             }
             resolve({
               success: true,
