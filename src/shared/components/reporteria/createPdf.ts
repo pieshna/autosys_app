@@ -7,6 +7,16 @@ import printjs from 'print-js'
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 const createPdf = async (props: any, output = 'print') => {
+  if (!props) {
+    console.log('No hay props')
+    return new Promise((resolve, reject) => {
+      reject({
+        success: false,
+        content: null,
+        message: 'No hay props'
+      })
+    })
+  }
   return new Promise((resolve, reject) => {
     try {
       const {
