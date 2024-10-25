@@ -117,6 +117,7 @@ const createPdf = async (props: any, output = 'print') => {
         message: 'Debes enviar tipo salida.'
       })
     } catch (error: any) {
+      console.log('paso algo', error)
       reject({
         success: false,
         content: null,
