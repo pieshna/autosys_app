@@ -165,7 +165,6 @@ const FormularioGenerico = ({
                         returnData={fieldData.returnData}
                         dataToReturn={dataToReturn}
                         placeholder={fieldData.placeholder}
-                        focus={index === 0 && index2 === 0}
                       />
                     </>
                   ) : (
@@ -187,7 +186,6 @@ const FormularioGenerico = ({
                         returnData={fieldData.returnData}
                         dataToReturn={dataToReturn}
                         placeholder={fieldData.placeholder}
-                        focus={index === 0 && index2 === 0}
                       />
                     </>
                   ) : (
