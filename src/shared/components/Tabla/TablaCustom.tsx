@@ -51,7 +51,7 @@ const TablaCustom = ({
   const [currentPage, setCurrentPage] = useState(0)
 
   if (data?.length === 0 || !data) {
-    return <p>No hay datos disponibles.</p>
+    return <p className="text-white p-4">No hay datos disponibles.</p>
   }
 
   const union = [...hideCamps, ...hideCampsCard]
