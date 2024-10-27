@@ -84,8 +84,8 @@ const createPdf = async (props: any, output = 'print') => {
         pageMargins, //MARGENES HOJA
         info, //METADATA PDF
         content, // CONTENIDO PDF
-        styles, //ESTILOS PDF
-        watermark
+        styles //ESTILOS PDF
+        //watermark
       }
 
       if (output === 'b64') {
