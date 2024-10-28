@@ -33,6 +33,7 @@ function Repuestos({ selectColumn }: RepuestosProps) {
       estructura={estructura}
       url="repuestos"
       columnSelected={selectColumn}
+      agregarBuscador
     />
   )
 }

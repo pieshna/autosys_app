@@ -8,8 +8,8 @@ import {
   ModalHeader,
   useDisclosure
 } from '@nextui-org/react'
-import { FormProps } from './createEdit.interface'
 import { useEffect } from 'react'
+import { FormProps } from './createEdit.interface'
 
 interface ModalGenericProps {
   textTitle: FormProps['textTitle']
@@ -19,6 +19,7 @@ interface ModalGenericProps {
   closeEvent?: () => void
   openDefault?: boolean
   children: React.ReactNode
+  buttonClose?: boolean
 }
 
 const ModalGeneric = ({
@@ -28,7 +29,8 @@ const ModalGeneric = ({
   onCloseEvent,
   closeEvent,
   openDefault = false,
-  children
+  children,
+  buttonClose
 }: ModalGenericProps) => {
   const {
     isOpen,
@@ -71,7 +73,10 @@ const ModalGeneric = ({
                 {textTitle}
               </ModalHeader>
             )}
-            <ModalBody>{children}</ModalBody>
+            <ModalBody>
+              {children}
+              {buttonClose && <Button onPress={onClose}>Cerrar</Button>}
+            </ModalBody>
           </>
         </ModalContent>
       </Modal>

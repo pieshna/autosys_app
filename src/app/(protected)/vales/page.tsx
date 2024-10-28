@@ -36,6 +36,7 @@ function Vales({ selectColumn }: { selectColumn?: any }) {
       url="vales"
       hideCols={['repuesto_id', 'id']}
       columnSelected={selectColumn}
+      agregarBuscador
     />
   )
 }
