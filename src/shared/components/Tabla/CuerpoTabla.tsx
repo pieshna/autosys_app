@@ -1,4 +1,8 @@
+import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
+import { GetDecodedToken } from '@/shared/tools/token/tokenFromClient'
 import Link from 'next/link'
+
+const decoded = GetDecodedToken(getCookieClientSide('token'))
 
 interface CuerpoTablaProps {
   currentPageData: any[]
@@ -50,26 +54,28 @@ const CuerpoTabla = ({
                   </span>
                 </Link>
               )}
-              {acciones.editarPerso && (
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
-                  onClick={() => {
-                    if (acciones.editarPerso) {
-                      acciones.editarPerso(item.id || item[idName])
-                    }
-                  }}
-                >
-                  Editar
-                </button>
-              )}
-              {acciones.eliminar && (
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg ml-4"
-                  onClick={() => acciones.eliminar!(item.id || item[idName])}
-                >
-                  Quitar
-                </button>
-              )}
+              {acciones.editarPerso &&
+                decoded?.rol?.toUpperCase() !== 'trabajador'.toUpperCase() && (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
+                    onClick={() => {
+                      if (acciones.editarPerso) {
+                        acciones.editarPerso(item.id || item[idName])
+                      }
+                    }}
+                  >
+                    Editar
+                  </button>
+                )}
+              {acciones.eliminar &&
+                decoded?.rol?.toUpperCase() !== 'trabajador'.toUpperCase() && (
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg ml-4"
+                    onClick={() => acciones.eliminar!(item.id || item[idName])}
+                  >
+                    Quitar
+                  </button>
+                )}
             </td>
           )}
         </tr>
