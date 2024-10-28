@@ -27,6 +27,14 @@ function AdminDashboard() {
     setDataGrafica(datosTemp as BarChartProps)
   }
 
+  const defineWeek = (fec: string) => {
+    const date = fec ?? new Date().toISOString()
+    const fecha = new Date(date)
+    const tmp = new Date(date)
+    const added = new Date(tmp.setDate(tmp.getDate() + 6))
+    return `${fecha.toLocaleDateString()} - ${added.toLocaleDateString()}`
+  }
+
   return (
     <>
       <div className="grid md:grid-cols-2 text-white">
@@ -53,10 +61,7 @@ function AdminDashboard() {
             Trabajadores - salario de la semana
           </p>
           <p className="text-center">
-            {new Date(
-              new Date().setDate(new Date().getDate() - 7)
-            ).toLocaleDateString()}{' '}
-            - {new Date().toLocaleDateString()}
+            {defineWeek(dataProducts[0]?.semana_inicio)}
           </p>
           <div className="flex flex-col items-center pt-3">
             {dataProducts.map((item, i) => {
