@@ -82,7 +82,7 @@ function TiemposTrabajos() {
         <ModalGeneric
           textTitle="Agregar Vales"
           onCloseEvent={true}
-          closeEvent={() => {}}
+          closeEvent={handleCloseModal}
           openDefault={true}
           sizeModal="5xl"
         >

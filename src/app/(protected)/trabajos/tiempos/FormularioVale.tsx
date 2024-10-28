@@ -17,7 +17,7 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
   const [key, setKey] = useState('1')
   const [repuestos, setRepuestos] = useState<any[]>([])
   const [vales, setVales] = useState<any[]>([])
-  const handleSubmit = () => {
+  const handleSubmitRepuestos = () => {
     const tmp = repuestos.map((item) => {
       return {
         trabajo_id: item.trabajo_id,
@@ -30,9 +30,14 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
     }).then((data) => {
       if (data) {
         toast.success('Repuesto agregado al trabajo con exito')
-        handleSubmitVale()
       }
     })
+  }
+
+  const handleSubmit = () => {
+    if (repuestos.length > 0) handleSubmitRepuestos()
+    if (vales.length > 0) handleSubmitVale()
+    close()
   }
 
   const handleRepuestos = (item: any, column: any) => {
@@ -73,7 +78,6 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
     }).then((data) => {
       if (data) {
         toast.success('Vale agregado al trabajo con exito')
-        close()
       }
     })
   }
@@ -120,12 +124,23 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
           }}
         />
       </ModalGeneric>
-      <TablaCustom
-        data={[...repuestos, ...vales]}
-        idName="id"
-        acciones={{ eliminar: handleEliminar }}
-        hideCamps={['id', 'trabajo_id', 'repuesto_id', 'vale_id', 'trabajo_id']}
-      />
+      {[...repuestos, ...vales].length > 0 && (
+        <TablaCustom
+          data={[...repuestos, ...vales]}
+          idName="id"
+          acciones={{ eliminar: handleEliminar }}
+          hideCamps={[
+            'id',
+            'trabajo_id',
+            'repuesto_id',
+            'vale_id',
+            'trabajo_id'
+          ]}
+        />
+      )}
+      {[...repuestos, ...vales].length === 0 && (
+        <p className="text-center text-3xl py-6">No hay datos</p>
+      )}
       <Button onClick={handleSubmit}>Guardar</Button>
     </>
   )
