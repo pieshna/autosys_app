@@ -1,4 +1,6 @@
 'use client'
+import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
+import { GetDecodedToken } from '@/shared/tools/token/tokenFromClient'
 import { DndContext, DragEndEvent } from '@dnd-kit/core'
 import { Button } from '@nextui-org/react'
 import Link from 'next/link'
@@ -14,6 +16,8 @@ interface WrapperDnDProps {
   keyShow: string[]
   textSlotDisponible?: string
 }
+
+const decoded = GetDecodedToken(getCookieClientSide('token'))
 
 function WrapperDnD({
   contents,
@@ -91,12 +95,14 @@ function WrapperDnD({
         </DndContext>
       </div>
       <div className="flex justify-between">
-        <Button href="/trabajos" as={Link}>
-          Volver
-        </Button>
-        <Button color="success" onClick={() => submit && submit(items)}>
+        {decoded?.rol?.toUpperCase() !== 'trabajador'.toUpperCase() && (
+          <Button href="/trabajos" as={Link}>
+            Volver
+          </Button>
+        )}
+        {/*<Button color="success" onClick={() => submit && submit(items)}>
           Guardar
-        </Button>
+        </Button>*/}
       </div>
     </>
   )

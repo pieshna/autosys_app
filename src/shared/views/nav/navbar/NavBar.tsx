@@ -41,7 +41,17 @@ const getNav = async () => {
   if (!data || data?.length === 0) {
     return menuItemsDefault
   }
-  const unido = [...data, ...menuItemsDefault]
+  let unido = [...data, ...menuItemsDefault]
+  //if rol is secretaria remove some items
+  if (tokenDecoded?.rol === 'secretaria'.toUpperCase()) {
+    //remove item with title 'Usuarios' or Administracion
+    unido = unido.filter((item) => item.title !== 'Usuarios')
+    unido = unido.filter((item) => item.title !== 'Administracion')
+  }
+
+  if (tokenDecoded?.rol === 'trabajador'.toUpperCase()) {
+    unido = menuItemsDefault
+  }
   return unido
 }
 
