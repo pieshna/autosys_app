@@ -7,7 +7,7 @@ import TrabajadorDashboard from './TrabajadorDashboard'
 async function DashboardView() {
   const decoded = GetDecodedToken(getCookieServerSide('token'))
 
-  if (decoded?.rol?.toUpperCase() === 'admin'.toUpperCase()) {
+  if (decoded?.rol?.toUpperCase() === 'administrador'.toUpperCase()) {
     return <AdminDashboard />
   }
   if (decoded?.rol?.toUpperCase() === 'secretaria'.toUpperCase()) {
