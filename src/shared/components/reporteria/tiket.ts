@@ -106,10 +106,18 @@ const generateTicket = async (output: any, data: datosRecibo) => {
       margin: [10, 10]
     },
     {
-      text: 'Gracias por su compra',
+      text: 'Gracias por confiar en nosotros',
       alignment: 'center',
       bold: true,
       marginTop: 20
+    },
+    //footer de la pagina
+    {
+      text: 'Reconstructora de motores\n79432882',
+      alignment: 'center',
+      fontSize: 12,
+      bold: true,
+      absolutePosition: { x: 0, y: 750 }
     }
   ]
 
