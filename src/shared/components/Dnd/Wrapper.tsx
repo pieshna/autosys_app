@@ -112,9 +112,11 @@ function WrapperDnD({
             Volver
           </Button>
         )}
-        {/*<Button color="success" onClick={() => submit && submit(items)}>
-          Guardar
-        </Button>*/}
+        {
+          <Button color="success" onClick={() => submit && submit(items)}>
+            Guardar
+          </Button>
+        }
       </div>
     </>
   )
