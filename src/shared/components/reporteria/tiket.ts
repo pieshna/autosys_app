@@ -51,7 +51,7 @@ const generateTicket = async (output: any, data: datosRecibo) => {
       text:
         'Marca: ' +
         data.marca +
-        '\nModelo: ' +
+        '\nLinea: ' +
         data.modelo +
         '\nPlaca: ' +
         data.placa,
