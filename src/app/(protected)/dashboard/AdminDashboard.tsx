@@ -80,6 +80,28 @@ function AdminDashboard() {
                 </div>
               )
             })}
+            {
+              //sumar los pagos
+              dataProducts.length > 0 && (
+                <div className="flex gap-10 pt-5 border-b-2 text-pateleta-950">
+                  <div className="flex flex-col justify-end w-36 ">
+                    <p>Total</p>
+                  </div>
+                  <div className="flex flex-col justify-end items-center w-48 ">
+                    <p>
+                      Q.
+                      {dataProducts
+                        .reduce(
+                          (acc, item) =>
+                            acc + parseFloat(item.pago_trabajador.slice(0, -2)),
+                          0
+                        )
+                        .toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
