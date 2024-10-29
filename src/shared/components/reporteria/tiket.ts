@@ -84,7 +84,7 @@ const generateTicket = async (output: any, data: datosRecibo) => {
             producto.nombre,
             producto.cantidad,
             'Q' + producto.precio,
-            'Q' + producto.cantidad * producto.precio
+            'Q' + (producto.cantidad * producto.precio).toFixed(2)
           ]),
           [
             {
@@ -95,10 +95,9 @@ const generateTicket = async (output: any, data: datosRecibo) => {
             '',
             '',
             'Q' +
-              data.productos.reduce(
-                (acc, cur) => acc + cur.cantidad * cur.precio,
-                0
-              )
+              data.productos
+                .reduce((acc, cur) => acc + cur.cantidad * cur.precio, 0)
+                .toFixed(2)
           ]
         ]
       },
