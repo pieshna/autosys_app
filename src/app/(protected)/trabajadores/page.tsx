@@ -25,6 +25,12 @@ function Trabajadores() {
       placeholder: 'Ingrese un apellido',
       required: false
     },
+    dpi: {
+      type: 'number',
+      label: 'DPI',
+      placeholder: 'Ingrese el DPI',
+      required: false
+    },
     porcentaje: {
       type: 'number',
       label: 'Porcentaje',
