@@ -31,7 +31,8 @@ const estructura: FormularioEstructura = {
   placa: {
     type: 'text',
     label: 'Placa',
-    required: true
+    required: true,
+    defaultValue: 'P-'
   }
 }
 
