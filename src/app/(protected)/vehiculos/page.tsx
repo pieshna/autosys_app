@@ -49,6 +49,7 @@ function Vehiculos() {
       headerName={rename}
       url="vehiculos"
       hideCols={['id', 'cliente_id']}
+      agregarBuscador
     />
   )
 }
