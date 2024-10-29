@@ -68,7 +68,7 @@ function TiemposTrabajos() {
         submit={handleSubmit}
         data={data}
         change={handleChange}
-        keyShow={['cliente', 'placa', 'descripcion']}
+        keyShow={['trabajador', 'cliente', 'placa', 'descripcion']}
       />
       {id && (
         <EditForm

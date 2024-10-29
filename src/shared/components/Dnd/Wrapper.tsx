@@ -57,7 +57,19 @@ function WrapperDnD({
   const showKeys = (item: any) => {
     //unir y mostrar datos de la lista
     if (keyShow.length === 0) return 'No se han definido keys'
-    return keyShow.map((key) => item[key]).join(' ')
+    const tmp = keyShow.map((key, i) => {
+      if (i === 0) return 'Trabajador: ' + item[key]
+      if (i === 1) return 'Cliente: ' + item[key]
+      if (i === 2) return 'Placa: ' + item[key]
+      if (i === 3) return 'Descripcion: ' + item[key]
+    })
+    return (
+      <div>
+        {tmp.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </div>
+    )
   }
 
   return (
