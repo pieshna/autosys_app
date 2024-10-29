@@ -37,7 +37,9 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
   const handleSubmit = () => {
     if (repuestos.length > 0) handleSubmitRepuestos()
     if (vales.length > 0) handleSubmitVale()
-    close()
+    setTimeout(() => {
+      close()
+    }, 2000)
   }
 
   const handleRepuestos = (item: any, column: any) => {
