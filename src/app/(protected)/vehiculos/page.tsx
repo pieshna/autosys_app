@@ -20,12 +20,12 @@ const estructura: FormularioEstructura = {
   },
   modelo: {
     type: 'text',
-    label: 'Modelo',
+    label: 'Linea',
     required: true
   },
   anio: {
     type: 'number',
-    label: 'Año',
+    label: 'Modelo',
     required: true
   },
   placa: {
@@ -37,8 +37,12 @@ const estructura: FormularioEstructura = {
 
 const rename: headerProps[] = [
   {
-    header: 'Año',
+    header: 'Modelo',
     value: 'anio'
+  },
+  {
+    header: 'Linea',
+    value: 'modelo'
   }
 ]
 
