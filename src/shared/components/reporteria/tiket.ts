@@ -31,9 +31,10 @@ const generateTicket = async (output: any, data: datosRecibo) => {
       width: 100
     },
     {
-      text: 'Autosys - Taller Mecánico',
+      text: 'Autosys',
       bold: true,
-      margin: [10, -15, 10, 10]
+      fontSize: 20,
+      margin: [20, -25, 10, 10]
     },
     {
       text: 'Fecha: ' + (data.fecha ?? new Date().toLocaleDateString()),
