@@ -6,7 +6,7 @@ import { getCookieClientSide } from '@/shared/tools/cookies/tokenClientSide'
 import { fetchPersonalizado } from '@/shared/tools/fetchPersonalizado'
 import { Button } from '@nextui-org/react'
 import { IconArticle, IconList } from '@tabler/icons-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import Repuestos from '../../repuestos/page'
 import Vales from '../../vales/page'
@@ -17,14 +17,31 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
   const [key, setKey] = useState('1')
   const [repuestos, setRepuestos] = useState<any[]>([])
   const [vales, setVales] = useState<any[]>([])
+  const [datos, setDatos] = useState<any[]>([])
+
+  useEffect(() => {
+    fetchPersonalizado(`trabajos_repuestos/${id}`, 'GET', token).then(
+      (data) => {
+        setDatos([...datos, ...data])
+        setRepuestos([...repuestos, ...data])
+      }
+    )
+    fetchPersonalizado(`vales_trabajos/${id}`, 'GET', token).then((data) => {
+      setDatos([...datos, ...data])
+      setVales([...vales, ...data])
+    })
+  }, [])
+
   const handleSubmitRepuestos = () => {
-    const tmp = repuestos.map((item) => {
+    const filtered = repuestos.filter((item) => !item.omit)
+    const tmp = filtered.map((item) => {
       return {
         trabajo_id: item.trabajo_id,
         repuesto_id: item.repuesto_id,
         cantidad: item.cantidad
       }
     })
+    if (tmp.length === 0) return
     fetchPersonalizado('trabajos_repuestos', 'POST', token, {
       tmp
     }).then((data) => {
@@ -69,12 +86,14 @@ function FormularioVale({ id, close }: { id?: string; close: any }) {
   }
 
   const handleSubmitVale = () => {
-    const tmp = vales.map((item) => {
+    const filtered = vales.filter((item) => !item.omit)
+    const tmp = filtered.map((item) => {
       return {
         vale_id: item.vale_id,
         trabajo_id: item.trabajo_id
       }
     })
+    if (tmp.length === 0) return
     fetchPersonalizado('vales_trabajos', 'POST', token, {
       tmp
     }).then((data) => {

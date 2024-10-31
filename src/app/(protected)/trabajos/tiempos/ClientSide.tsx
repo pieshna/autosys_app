@@ -17,6 +17,7 @@ function TiemposTrabajos() {
   const [datapdf, setDatapdf] = useState<any>(undefined)
   const [id, setId] = useState()
   const [showModal, setShowModal] = useState()
+  const [stop, setStop] = useState(false)
   useEffect(() => {
     fetchPersonalizado('trabajos/disponibles', 'GET', token).then((data) => {
       setData(data)
@@ -47,10 +48,22 @@ function TiemposTrabajos() {
 
   const handleClose = () => {
     setShowModal(id)
+    setStop(false)
     setId(undefined)
   }
 
+  const showMe = (id: any) => {
+    setShowModal(id.id)
+    setStop(true)
+    //setId(undefined)
+  }
+
   const handleCloseModal = () => {
+    if (stop) {
+      setStop(false)
+      setShowModal(undefined)
+      return
+    }
     fetchPersonalizado('trabajos/recibo/' + showModal, 'GET', token).then(
       (data) => {
         setDatapdf(data)
@@ -69,6 +82,7 @@ function TiemposTrabajos() {
         data={data}
         change={handleChange}
         keyShow={['trabajador', 'cliente', 'placa', 'descripcion']}
+        dobleClick={showMe}
       />
       {id && (
         <EditForm

@@ -15,6 +15,7 @@ interface WrapperDnDProps {
   data: any[]
   keyShow: string[]
   textSlotDisponible?: string
+  dobleClick?: (data: any) => void
 }
 
 const decoded = GetDecodedToken(getCookieClientSide('token'))
@@ -25,7 +26,8 @@ function WrapperDnD({
   data,
   change,
   keyShow = [],
-  textSlotDisponible = 'Disponible'
+  textSlotDisponible = 'Disponible',
+  dobleClick
 }: WrapperDnDProps) {
   const [items, setItems] = useState(data ?? [])
   const [droppableCount, setDroppableCount] = useState<string[]>(contents)
@@ -68,6 +70,9 @@ function WrapperDnD({
         {tmp.map((item, index) => (
           <p key={index}>{item}</p>
         ))}
+        <Button color="success" onClick={() => dobleClick && dobleClick(item)}>
+          Vale
+        </Button>
       </div>
     )
   }

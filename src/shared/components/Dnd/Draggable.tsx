@@ -7,6 +7,7 @@ import { createPortal } from 'react-dom'
 interface DraggableProps {
   children: ReactNode
   id: string
+  onDoubleClick?: (e: any) => void
 }
 
 // Componente para manejar el portal durante el arrastre
@@ -14,7 +15,7 @@ const DraggablePortal = ({ children }: { children: ReactNode }) => {
   return createPortal(children, document.body)
 }
 
-function Draggable({ children, id }: DraggableProps) {
+function Draggable({ children, id, onDoubleClick }: DraggableProps) {
   // Estado para controlar si está siendo arrastrado
   const [isDragging, setIsDragging] = useState(false)
 
@@ -47,6 +48,7 @@ function Draggable({ children, id }: DraggableProps) {
       style={style}
       {...listeners}
       {...attributes}
+      onDoubleClick={onDoubleClick}
     >
       {children}
     </div>
