@@ -34,7 +34,11 @@ function ListTrabajador() {
           }, 0)
           .toFixed(2)}
       </p>
-      <TablaCustom data={data} idName="id" />
+      <TablaCustom
+        data={data}
+        idName="id"
+        hideCamps={['id', 'semana_inicio']}
+      />
     </>
   )
 }
