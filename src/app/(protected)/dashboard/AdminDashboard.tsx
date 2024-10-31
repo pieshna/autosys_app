@@ -6,6 +6,14 @@ import { useEffect, useState } from 'react'
 
 const token = getCookieClientSide('token')
 
+export const defineWeek = (fec: string) => {
+  const date = fec ?? new Date().toISOString()
+  const fecha = new Date(date)
+  const tmp = new Date(date)
+  const added = new Date(tmp.setDate(tmp.getDate() + 6))
+  return `${fecha.toLocaleDateString()} - ${added.toLocaleDateString()}`
+}
+
 function AdminDashboard() {
   const [dataGrafica, setDataGrafica] = useState<BarChartProps>()
   const [dataProducts, setDataProducts] = useState([] as any[])
@@ -29,14 +37,6 @@ function AdminDashboard() {
       datosConfig: { labels, datos, colores }
     }
     setDataGrafica(datosTemp as BarChartProps)
-  }
-
-  const defineWeek = (fec: string) => {
-    const date = fec ?? new Date().toISOString()
-    const fecha = new Date(date)
-    const tmp = new Date(date)
-    const added = new Date(tmp.setDate(tmp.getDate() + 6))
-    return `${fecha.toLocaleDateString()} - ${added.toLocaleDateString()}`
   }
 
   return (

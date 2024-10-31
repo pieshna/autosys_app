@@ -50,7 +50,19 @@ const getNav = async () => {
   }
 
   if (tokenDecoded?.rol === 'trabajador'.toUpperCase()) {
-    unido = menuItemsDefault
+    const menu: MenuItemInterface[] = [
+      {
+        navbar_id: '2',
+        title: 'Trabajos realizados',
+        link: '/trabajos/trabajador'
+      },
+      {
+        navbar_id: '3',
+        title: 'Listado de trabajos',
+        link: '/dashboard'
+      }
+    ]
+    unido = [...menu, ...menuItemsDefault]
   }
   return unido
 }
