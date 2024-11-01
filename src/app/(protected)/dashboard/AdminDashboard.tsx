@@ -42,22 +42,24 @@ function AdminDashboard() {
   return (
     <>
       <div className="grid md:grid-cols-2 text-white">
-        <div className="grid place-items-center pt-10">
-          <p className="text-center font-bold text-xl">Trabajos realizados</p>
-          <p className="text-center text-xs">
+        <div className="flex flex-col justify-center items-center pt-10">
+          <p className="text-center  text-xl">Trabajos realizados</p>
+          <p className="text-center pb-2">
             {defineWeek(dataProducts[0]?.semana_inicio)}
           </p>
           {dataCarros.length > 0 &&
             dataCarros.map((item, i) => (
-              <div key={i} className="w-56 border-b-2 text-center">
-                <p>
-                  {item.estado} - {item.cantidad} carro(s)
-                </p>
+              <div
+                key={i}
+                className="flex w-56 border-b-2 text-center justify-between"
+              >
+                <p>{item.estado}</p>
+                <p> {item.cantidad} carro(s)</p>
               </div>
             ))}
-          <div className="w-56 border-b-2 text-center">
+          <div className="w-56 border-b-2 text-center pt-5 flex justify-between">
+            <p>Total:</p>
             <p>
-              Total:{' '}
               {dataCarros.reduce((acc, item) => acc + Number(item.cantidad), 0)}{' '}
               carro(s)
             </p>
