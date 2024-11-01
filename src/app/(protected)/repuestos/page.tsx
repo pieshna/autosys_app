@@ -1,4 +1,5 @@
 'use client'
+import { headerProps } from '@/shared/components/Tabla/TablaCustom'
 import { FormularioEstructura } from '@/shared/estructurasFormularios/type'
 import CrudTemplate from '@/shared/views/CrudTemplate'
 
@@ -17,7 +18,7 @@ const estructura: FormularioEstructura = {
   },
   lugar: {
     type: 'text',
-    label: 'Lugar',
+    label: 'Proveedor',
     placeholder: 'Ingrese el lugar del repuesto',
     required: true
   }
@@ -26,6 +27,12 @@ const estructura: FormularioEstructura = {
 interface RepuestosProps {
   selectColumn?: any
 }
+const rename: headerProps[] = [
+  {
+    header: 'Proveedor',
+    value: 'lugar'
+  }
+]
 
 function Repuestos({ selectColumn }: RepuestosProps) {
   return (
@@ -34,6 +41,7 @@ function Repuestos({ selectColumn }: RepuestosProps) {
       url="repuestos"
       columnSelected={selectColumn}
       agregarBuscador
+      headerName={rename}
     />
   )
 }
